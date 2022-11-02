@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title>Derivative Interface</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"> </script>
+  <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"> </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="icon2.png">
+</head>
+
+<body class="d-flex flex-column h-100">
+  <!-- header of the page -->
+  <header class="header">
+    <img class='logo' src="logo.png" width="150" height="150" alt="">
+    <div class="">
+      <div class="text-center">
+        <br> <br>
+        <h3>Picker Assistant</h3>
+      </div>
+    </div>
+  </header>
+<br>
+  <!-- main content -->
+  <!-- main content -->
+  <main id="vueApp">
+    <div class="">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="">
+            <div class="card-body">
+              <h3>{{ menu_title }}</h3>
+              <hr>
+              <label>ROSBridge address</label>
+              <br>
+              <input type="text" v-model="rosbridge_address" />
+              <br>
+              <button class="mt-2 btn btn-success" v-if="connected" @click="disconnect">Connected!</button>
+              <button class="mt-2 btn btn-primary" v-else @click="connect">Connect!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="text-center">{{ main_title }}</h2>
+              <hr>
+              <p>Some actions for the robot</p>
+              <button class="mt-2 btn btn-primary" :disabled="!connected" @click="sendCommand">Move the robot</button>
+              <button class="mt-2 btn btn-primary" :disabled="!connected" @click="turnRight">Turn right</button>
+              <button class="mt-2 btn btn-danger" :disabled="!connected" @click="stop">Stop</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer mt-auto bg-dark text-light">
+    <div class="container">
+      <h2>Page ends here!</h2>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+
+</html>
